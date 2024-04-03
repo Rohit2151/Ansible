@@ -1,0 +1,28 @@
+sudo apt-add-repository ppa:ansible/ansible  --- create ansible repository
+
+sudo apt update  -- update system
+
+sudo apt install ansible -- INstall ansible
+
+sudo vi /etc/ansible/hosts -- edit host file and add ansible node public ip 
+with this refrance 
+[servers]
+server1 ansible_host=203.0.113.111
+server2 ansible_host=203.0.113.112
+server3 ansible_host=203.0.113.113
+
+[all:vars]
+ansible_python_interpreter=/usr/bin/python3
+---------------------------------------------------------------
+ansible-inventory --list -y  -- List of added ansible node
+
+ansible all -m ping -u root  -- check all nodes communicates with each other properly 
+
+ansible all -a "df -h" -u root -- add hoc command to run the specific(single) task
+
+ansible-vault create vault.yml  -- create valut encrypted file with the name of vault.yml 
+
+ansible-vault encrypt filename.yml -- here is the file will be password protected you can give any name to file
+
+ansible-vault decrypt filename.yml  -- its asking for password ones you add the password it will be the decrypt the file and you can see the file  content after.
+
