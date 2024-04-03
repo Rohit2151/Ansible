@@ -1,0 +1,8 @@
+create instance slave and our local is ansible master
+
+1. ansible master public_key it will be added in slave authorized_keys file
+2. cd /etc/ssh/sshd_config --> uncomment the line sshd_config file (PasswordAuthentication yes & PermitRootLogin its enable)
+3. restart the sshd (systemctl restart sshd)
+4. go in ansible master try to connect with ssh username@ip 
+
+Note : the id_rsa.pub key of ansible master added in root user of salve machine then you can access the root user from ansible master .
