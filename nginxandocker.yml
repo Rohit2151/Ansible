@@ -1,0 +1,43 @@
+# Its install nginx 
+---
+- hosts: all
+  become: yes
+  user: root
+  gather_facts: true
+  tasks:
+    - name: install nginx
+      apt: 
+        name: nginx
+        state: present
+
+    - name: status nginx 
+      services: 
+        name: nginx 
+        state: started 
+        
+    - name: install docker
+      apt: 
+        name: docker.io
+        state: latest
+****************************************************************************
+# Its remove nginx conf file 
+---
+- hosts: all 
+  become: yes
+  user: root
+  gather_facts: false 
+  tasks:
+    - name: install nginx
+      apt:
+        name: nginx
+        state: absent
+
+    - name: status nginx
+      service:       
+        name: nginx 
+        state: stopped
+
+    - name: remove docker 
+      apt:
+        name: docker.io 
+        state: absent
